@@ -1,0 +1,35 @@
+version: '3.1'
+
+services:
+#  db:
+#    image: mysql
+#    container_name: mysql
+#    environment:
+#      MYSQL_ROOT_PASSWORD: root
+#    ports:
+#    - "3306:3306"
+#    volumes:
+#    - locadora_data:/var/lib/mysql
+#
+#volumes:
+#  locadora_data:
+#
+  db:
+    image: postgres
+    container_name: postgres
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+    ports:
+      - "5432:5432"
+    volumes:
+ #     - postgres:/var/lib/postgres
+ #     - /c/Users/rick/teste/init.sql:/var/lib/postgres
+      - /c/Users/rick/teste/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  adminer:
+    image: adminer
+    ports:
+      - 8083:8080
+volumes:
+  postgres:
